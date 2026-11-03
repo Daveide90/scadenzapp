@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  L'icona delle notifiche viene indicata a runtime con una stringa
+  ("@drawable/ic_notification") dal codice Dart: la riduzione delle risorse
+  non la vede usata e la eliminerebbe dalla build release, lasciando le
+  notifiche senza icona.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_notification" />

@@ -1,0 +1,30 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+// Fix: sqflite_sqlcipher referenzia flutter.compileSdkVersion
+// che esiste solo nel progetto :app. Lo rendiamo disponibile a tutti.
+// Forza anche compileSdk 36 per tutti i plugin (fix lStar attr)
+subprojects { sub ->
+    sub.ext.set("flutter", [compileSdkVersion: 36, minSdkVersion: 26, targetSdkVersion: 36])
+    sub.plugins.withType(com.android.build.gradle.LibraryPlugin) {
+        sub.android {
+            compileSdk = 36
+        }
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

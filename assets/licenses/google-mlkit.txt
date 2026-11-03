@@ -1,0 +1,16 @@
+Componenti di Google inclusi nell'app per riconoscere testo e codici sul telefono, distribuiti secondo i Termini di servizio delle API di Google (https://developers.google.com/terms) e i Termini di ML Kit (https://developers.google.com/ml-kit/terms).
+
+com.google.android.gms:play-services-base:18.5.0
+com.google.android.gms:play-services-basement:18.4.0
+com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1
+com.google.android.gms:play-services-mlkit-text-recognition:19.0.1
+com.google.android.gms:play-services-mlkit-text-recognition-common:19.1.0
+com.google.android.gms:play-services-tasks:18.2.0
+com.google.android.odml:image:1.0.0-beta1
+com.google.mlkit:barcode-scanning:17.3.0
+com.google.mlkit:barcode-scanning-common:17.0.0
+com.google.mlkit:common:18.11.0
+com.google.mlkit:text-recognition:16.0.1
+com.google.mlkit:text-recognition-bundled-common:17.0.0
+com.google.mlkit:vision-common:17.3.0
+com.google.mlkit:vision-interfaces:16.3.0
