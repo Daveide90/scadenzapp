@@ -55,6 +55,15 @@ android {
 
 dependencies {
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
+
+    // Sicurezza (3/11/2026): versioni corrette di librerie che arrivano coi plugin.
+    // SQLCipher 4.20.0, con SQLite del 16/10/2026, al posto della 4.9.0 di
+    // sqflite_sqlcipher (SQLite 3.49.2): chiude CVE-2025-6965, CVE-2025-7709,
+    // CVE-2026-11822 e CVE-2026-11824. Stesso formato dei database (SQLCipher 4).
+    implementation "net.zetetic:sqlcipher-android:4.20.0@aar"
+    implementation "androidx.sqlite:sqlite:2.7.0"
+    // Guava 33.7.2, al posto della 33.5.0 che arriva con CameraX: CVE-2026-102554.
+    implementation "com.google.guava:guava:33.7.2-android"
 }
 
 flutter {

@@ -1,6 +1,20 @@
 # Novità di ScadenzApp
 
-## 1.4.0 · novembre 2026 (beta su Google Play)
+## 1.4.1 · 3 novembre 2026 (beta)
+
+**Sicurezza**
+
+- **SQLCipher 4.20.0**, con SQLite del 16/10/2026, al posto della 4.9.0
+  (SQLite 3.49.2) arrivata col plugin del database: chiude CVE-2025-6965,
+  CVE-2025-7709, CVE-2026-11822 e CVE-2026-11824. Servono SQL scritto
+  dall'attaccante o un database costruito apposta, cose che l'app non accetta:
+  è un aggiornamento preventivo. Il formato dei database non cambia.
+- **Guava 33.7.2** al posto della 33.5.0 arrivata con la fotocamera:
+  CVE-2026-102554 (deserializzazione Java, che l'app non usa).
+- Controllo di tutte le librerie (121 pacchetti Dart, 106 Android) sul
+  database pubblico OSV il 3/11/2026: nessun'altra vulnerabilità nota.
+
+## 1.4.0 · novembre 2026 (beta)
 
 **Nuovo**
 

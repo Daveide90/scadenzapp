@@ -4,7 +4,7 @@
 
 Medicine expiry inventory for ward, clinic and care home cabinets. · Inventario delle scadenze dei farmaci negli armadietti di reparto, ambulatorio e struttura.
 
-Version 1.4.0 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
+Version 1.4.1 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
 
 <p align="center">
   <a href="https://github.com/Daveide90/scadenzapp/releases/latest/download/ScadenzApp.apk"><img src="docs/pulsante-download.svg" width="340" alt="Download APK · Scarica l'APK"></a>
@@ -56,6 +56,16 @@ ScadenzApp is an inventory tool. **It is not a medical device**: it gives no adv
 | Backup | AES-256-CBC with HMAC-SHA256 (encrypt, then authenticate), key from PBKDF2-SHA256 with 600,000 iterations. |
 | Screen | The app's content is hidden in the recent apps list and cannot be captured in a screenshot. |
 | Permissions | Camera, notifications, biometrics, boot (to reschedule reminders), vibration. |
+
+### How I approached security
+
+**Secure by design.** ScadenzApp was built so that there is nothing to take from the outside: no Internet permission, no account, no server, no analytics. The data are encrypted on the phone (SQLCipher, key in the Android Keystore), backups are encrypted with a password, Android cloud backup and device transfer are off, and the screen cannot be captured.
+
+**Hardened as far as I could.** Then I strengthened it step by step: authenticated backups (encrypt-then-MAC, PBKDF2 at 600,000 iterations, constant-time comparison), checks on imported backup files, a safe move from older unencrypted databases, an optional lock with fingerprint or PIN, no medicine names on the lock screen. Third-party libraries are checked against the public OSV vulnerability database: on 3 November 2026 SQLCipher (with its SQLite) and Guava were updated to close known CVEs.
+
+**Tested with automated attacks by AI, in several rounds.** In repeated cycles, in June and November 2026, AI agents reviewed the code as an attacker would: reading the data without the key, forging or altering a backup, getting around the lock, crashing the app with crafted files. Every confirmed weakness was fixed, and where possible an automated test now reproduces the attack (for example a backup with an altered header or the wrong password), so that it cannot come back.
+
+**Limits.** This is the work of a hobbyist with AI tools, not an independent professional audit or a certification: weaknesses may remain. If you find one, please report it privately (see [SECURITY.md](SECURITY.md)).
 
 ### Install
 
@@ -124,6 +134,16 @@ ScadenzApp è uno strumento di inventario. **Non è un dispositivo medico**: non
 | Backup | AES-256-CBC con HMAC-SHA256 (cifra, poi autentica), chiave da PBKDF2-SHA256 a 600.000 iterazioni. |
 | Schermo | Il contenuto dell'app è nascosto nell'elenco delle app recenti e non si può catturare con uno screenshot. |
 | Permessi | Fotocamera, notifiche, biometria, riavvio (per riprogrammare gli avvisi), vibrazione. |
+
+### Come ho affrontato la sicurezza
+
+**Sicura fin dal progetto.** ScadenzApp è nata perché da fuori non ci sia niente da prendere: nessun permesso Internet, nessun account, nessun server, nessuna statistica. I dati sono cifrati sul telefono (SQLCipher, chiave nel Keystore di Android), i backup sono cifrati con una password, il backup di Android e il trasferimento fra telefoni sono spenti, e lo schermo non si può catturare.
+
+**Rinforzata finché ho potuto.** Poi l'ho irrobustita un passo alla volta: backup autenticati (cifra e poi autentica, PBKDF2 a 600.000 iterazioni, confronto a tempo costante), controlli sui file di backup importati, passaggio sicuro dai vecchi database in chiaro, blocco facoltativo con impronta o PIN, nessun nome di farmaco sulla schermata di blocco. Le librerie di terzi si controllano sul database pubblico delle vulnerabilità OSV: il 3 novembre 2026 SQLCipher (con il suo SQLite) e Guava sono state aggiornate per chiudere CVE note.
+
+**Messa alla prova con attacchi automatici di un'IA, in più cicli.** In più giri, a giugno e a novembre 2026, agenti di intelligenza artificiale hanno letto il codice come farebbe un attaccante: leggere i dati senza la chiave, falsificare o alterare un backup, aggirare il blocco, far chiudere l'app con file costruiti apposta. Ogni debolezza confermata è stata corretta e, dove possibile, ora una prova automatica riproduce l'attacco (per esempio un backup con l'intestazione alterata o con la password sbagliata), così non può tornare.
+
+**Limiti.** È il lavoro di un appassionato con strumenti di IA, non una revisione professionale indipendente né una certificazione: possono restare debolezze. Se ne trovi una, segnalala in privato (vedi [SECURITY.md](SECURITY.md)).
 
 ### Installare
 
