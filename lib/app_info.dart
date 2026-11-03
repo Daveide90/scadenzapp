@@ -5,8 +5,8 @@
 /// lo controlla test/intended_use_and_info_test.dart.
 library;
 
-const appVersion = '1.4.1';
-const appBuild = 11;
+const appVersion = '1.4.2';
+const appBuild = 12;
 
 /// Giorno in cui è stato scaricato il catalogo AIFA incluso (AAAA-MM-GG).
 const aifaCatalogDate = '2026-11-03';

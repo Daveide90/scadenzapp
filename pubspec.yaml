@@ -1,7 +1,7 @@
 name: scadenzapp
 description: "Gestione scadenze farmaci per operatori sanitari"
 publish_to: 'none'
-version: 1.4.1+11
+version: 1.4.2+12
 
 environment:
   sdk: ^3.5.4
@@ -41,7 +41,6 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: true
-  ios: true
   image_path: "assets/icon.png"
   adaptive_icon_background: "#055029"
   adaptive_icon_foreground: "assets/icon_foreground.png"

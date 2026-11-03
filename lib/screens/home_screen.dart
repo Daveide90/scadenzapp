@@ -9,6 +9,7 @@ import '../database/database_helper.dart';
 import '../legal/intended_use.dart';
 import '../models/cabinet.dart';
 import '../providers/cabinet_provider.dart';
+import '../services/backup_password.dart';
 import '../services/backup_reminder.dart';
 import '../services/backup_service.dart';
 import '../utils/expiry_utils.dart';
@@ -218,7 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
               autofocus: true,
               decoration: const InputDecoration(
                 labelText: 'Password di cifratura *',
-                hintText: 'Minimo 8 caratteri',
+                hintText: 'Minimo 12 caratteri',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock_outline),
               ),
@@ -247,21 +248,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: const Text('Crea backup'),
             onPressed: () {
               final pwd = passwordController.text;
-              if (pwd.length < 8) {
+              final problema = backupPasswordProblem(pwd, confirmController.text);
+              if (problema != null) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('La password deve avere almeno 8 caratteri'),
-                    backgroundColor: Colors.red,
-                  ),
-                );
-                return;
-              }
-              if (confirmController.text != pwd) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Le due password non coincidono'),
-                    backgroundColor: Colors.red,
-                  ),
+                  SnackBar(content: Text(problema), backgroundColor: Colors.red),
                 );
                 return;
               }

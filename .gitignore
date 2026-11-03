@@ -23,7 +23,6 @@ migrate_working_dir/
 
 # Flutter/Dart/Pub related
 **/doc/api/
-**/ios/Flutter/.last_build_id
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -49,3 +48,8 @@ android/app/upload-keystore.jks
 
 # Schermate generate (si esportano in docs/schermate con tools/schermate/esporta.py)
 /tools/schermate/png/
+
+# Chiavi locali (tools/genera_grafica.py legge OPENROUTER_API_KEY da un .env): mai su GitHub
+.env
+.env.*
+*.env

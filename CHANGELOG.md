@@ -1,5 +1,19 @@
 # Novità di ScadenzApp
 
+## 1.4.2 · 3 novembre 2026 (beta)
+
+**Sicurezza**
+
+- **Password dei backup nuovi di almeno 12 caratteri** invece di 8. I
+  backup già fatti con una password più corta si aprono ancora: il
+  ripristino non cambia.
+
+**Pulizia del repository**
+
+- Tolte le cartelle iOS, web e desktop (Linux, macOS, Windows) generate da
+  Flutter e mai usate: ScadenzApp esce solo per Android.
+- I file `.env` con le chiavi locali sono esclusi da git.
+
 ## 1.4.1 · 3 novembre 2026 (beta)
 
 **Sicurezza**

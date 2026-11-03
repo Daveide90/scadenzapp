@@ -44,7 +44,7 @@ Dodici rilievi da correggere prima del test chiuso, più nove miglioramenti picc
 
 ## Cosa regge
 
-Cifratura del database (SQLCipher 4.9, chiave casuale da 256 bit, `resetOnError: false`), apertura condivisa contro le corse all'avvio, ripristino completo validato prima di cancellare e dentro una transazione, confronto dell'HMAC a tempo costante, lavoro pesante del backup in un isolate, notifiche nascoste sulla schermata di blocco, nome protetto dalle sovrascritture, scheda di conferma con il doppio tocco bloccato, lettore GS1 e AIC con test. Analisi statica pulita (3 note di stile), 119 test verdi, OSV: nessuna vulnerabilità nota sui 112 pacchetti.
+Cifratura del database (SQLCipher 4.20 dalla 1.4.1 (prima 4.9), chiave casuale da 256 bit, `resetOnError: false`), apertura condivisa contro le corse all'avvio, ripristino completo validato prima di cancellare e dentro una transazione, confronto dell'HMAC a tempo costante, lavoro pesante del backup in un isolate, notifiche nascoste sulla schermata di blocco, nome protetto dalle sovrascritture, scheda di conferma con il doppio tocco bloccato, lettore GS1 e AIC con test. Analisi statica pulita (3 note di stile), 119 test verdi, OSV: nessuna vulnerabilità nota sui 112 pacchetti.
 
 ## Ordine proposto
 

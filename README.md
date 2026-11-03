@@ -4,7 +4,7 @@
 
 Medicine expiry inventory for ward, clinic and care home cabinets. · Inventario delle scadenze dei farmaci negli armadietti di reparto, ambulatorio e struttura.
 
-Version 1.4.1 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
+Version 1.4.2 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
 
 <p align="center">
   <a href="https://github.com/Daveide90/scadenzapp/releases/latest/download/ScadenzApp.apk"><img src="docs/pulsante-download.svg" width="340" alt="Download APK · Scarica l'APK"></a>
