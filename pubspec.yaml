@@ -1,7 +1,7 @@
 name: scadenzapp
 description: "Gestione scadenze farmaci per operatori sanitari"
 publish_to: 'none'
-version: 1.4.2+12
+version: 1.4.3+13
 
 environment:
   sdk: ^3.5.4

@@ -119,9 +119,33 @@ void main() {
         'Roboto',
         'Dati dei farmaci (AIFA)',
         'Librerie Android',
+        'Librerie Android: avvisi (NOTICE)',
         'SLF4J',
       ]) {
         expect(packages, contains(p));
+      }
+    });
+
+    test('i NOTICE e le BSD delle librerie Android sono nel testo', () async {
+      registerExtraLicenses();
+      final testi = StringBuffer();
+      await for (final entry in LicenseRegistry.licenses) {
+        if (entry.packages.contains('Librerie Android: avvisi (NOTICE)')) {
+          for (final p in entry.paragraphs) {
+            testi.writeln(p.text);
+          }
+        }
+      }
+      final t = testi.toString();
+      for (final atteso in [
+        'Kotlin Compiler',
+        'kotlinx.coroutines library',
+        'Stephen Colebourne',
+        'Apache Commons IO',
+        'Apache Tika core',
+        'Redistribution and use in source and binary forms',
+      ]) {
+        expect(t, contains(atteso));
       }
     });
   });

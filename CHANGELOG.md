@@ -1,5 +1,15 @@
 # Novità di ScadenzApp
 
+## 1.4.3 · 6 novembre 2026 (beta)
+
+**Licenze**
+
+- **Avvisi delle librerie Android completi.** In Impostazioni › Licenze
+  c'è la voce «Librerie Android: avvisi (NOTICE)», con i file NOTICE di
+  Kotlin, kotlinx.coroutines, Apache Commons IO e Apache Tika, la licenza
+  BSD di ThreeTen (dentro la libreria standard di Kotlin) e le licenze dei
+  sottocomponenti di Tika, come chiedono la Apache 2.0 e la BSD.
+
 ## 1.4.2 · 3 novembre 2026 (beta)
 
 **Sicurezza**

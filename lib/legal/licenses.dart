@@ -35,6 +35,10 @@ void registerExtraLicenses() {
       const ['Librerie Android'],
       await rootBundle.loadString('assets/licenses/android-apache.txt'),
     );
+    yield LicenseEntryWithLineBreaks(
+      const ['Librerie Android: avvisi (NOTICE)'],
+      await rootBundle.loadString('assets/licenses/android-notice.txt'),
+    );
   });
 }
 

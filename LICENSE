@@ -1,5 +1,7 @@
 Required Notice: Copyright (c) 2026 Daveide90 (https://github.com/Daveide90)
 
+This licence covers the code of ScadenzApp. The third-party components it uses keep their own licences: the Dart packages, Android libraries, fonts and data are listed with their licence texts in the app (Impostazioni › Licenze) and in assets/licenses/.
+
 # PolyForm Noncommercial License 1.0.0
 
 <https://polyformproject.org/licenses/noncommercial/1.0.0>
