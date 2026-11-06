@@ -1,77 +1,110 @@
-Required Notice: Copyright (c) 2026 Daveide90 (https://github.com/Daveide90)
+ScadenzApp — Licenza d'uso / End-User License Agreement
+Copyright (c) 2026 Daveide90. Tutti i diritti riservati / All rights reserved.
 
-This licence covers the code of ScadenzApp. The third-party components it uses keep their own licences: the Dart packages, Android libraries, fonts and data are listed with their licence texts in the app (Impostazioni › Licenze) and in assets/licenses/.
+════════════════════════════ ITALIANO ════════════════════════════
 
-# PolyForm Noncommercial License 1.0.0
+1. CONCESSIONE
+L'autore concede al singolo professionista sanitario (infermiere, farmacista,
+medico o altro operatore sanitario, persona fisica) una licenza gratuita,
+personale, non esclusiva e non trasferibile per installare e usare
+l'applicazione sui propri dispositivi personali, come supporto al proprio
+controllo delle scadenze dei farmaci. Chi usa l'applicazione se ne assume la
+responsabilità.
 
-<https://polyformproject.org/licenses/noncommercial/1.0.0>
+2. USI VIETATI
+Senza previo accordo scritto con l'autore sono vietati:
+  a) l'uso, l'adozione o il dispiegamento da parte di aziende sanitarie,
+     ospedali, cliniche, RSA, case di cura, farmacie, cooperative, società o
+     qualsiasi altra organizzazione pubblica o privata, anche a titolo
+     gratuito;
+  b) l'installazione su dispositivi aziendali e la messa dell'applicazione
+     a disposizione del personale di una struttura;
+  c) la vendita, la rivendita, il noleggio, la sublicenza e la
+     ridistribuzione dell'applicazione o di sue parti;
+  d) la modifica, la decompilazione, il reverse engineering e la creazione
+     di opere derivate, salvo quanto inderogabilmente consentito dalla legge.
 
-## Acceptance
+3. CODICE SORGENTE
+Il codice è pubblicato su GitHub perché si possa leggere e verificare. I
+Termini di servizio di GitHub permettono agli utenti di GitHub di vederlo e
+di farne un fork sulla piattaforma; ogni altro uso del codice è regolato dal
+punto 2.
 
-In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
+4. NESSUNA GARANZIA
+L'applicazione è fornita "così com'è", senza garanzie di alcun tipo, espresse
+o implicite. Non è un dispositivo medico: la data e il lotto letti dalla
+fotocamera vanno sempre controllati sulla confezione, e l'applicazione non
+sostituisce i registri, le procedure e le responsabilità previsti dalla
+struttura. Nei limiti di legge, l'autore non risponde di alcun danno
+derivante dall'uso o dal mancato uso dell'applicazione.
 
-## Copyright License
+5. COMPONENTI DI TERZI
+I componenti di terzi contenuti nell'applicazione (pacchetti Dart, librerie
+Android, componenti dentro Google ML Kit e Google Play services, caratteri)
+e i dati dei farmaci dell'Agenzia Italiana del Farmaco (CC BY 4.0) restano
+sotto le proprie licenze, elencate nell'applicazione (Impostazioni ›
+Licenze); quelle che Flutter non raccoglie da solo sono anche in
+assets/licenses/.
 
-The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose.  However, you may only distribute the software according to [Distribution License](#distribution-license) and make changes or new works based on the software according to [Changes and New Works License](#changes-and-new-works-license).
+6. VERSIONI PRECEDENTI
+Le versioni fino alla 1.4.3 sono state distribuite con la PolyForm
+Noncommercial License 1.0.0 e restano sotto quella licenza per chi le ha
+ricevute. Dalla versione 1.4.4 vale questa licenza.
 
-## Distribution License
+7. LICENZE PER LE STRUTTURE
+Per l'uso da parte di strutture e organizzazioni si contatta l'autore
+attraverso la pagina del progetto: https://github.com/Daveide90/scadenzapp
 
-The licensor grants you an additional copyright license to distribute copies of the software.  Your license to distribute covers distributing the software with changes and new works permitted by [Changes and New Works License](#changes-and-new-works-license).
+════════════════════════════ ENGLISH ═════════════════════════════
 
-## Notices
+1. GRANT
+The author grants the individual healthcare professional (nurse,
+pharmacist, physician or other healthcare practitioner, natural person) a
+free, personal, non-exclusive, non-transferable license to install and use
+the application on their own personal devices, as an aid to their own
+checking of medicine expiry dates. Whoever uses the application takes
+responsibility for its use.
 
-You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software.  For example:
+2. PROHIBITED USES
+Without the author's prior written agreement, the following are prohibited:
+  a) use, adoption or deployment by healthcare companies, hospitals,
+     clinics, nursing homes, care homes, pharmacies, cooperatives,
+     corporations or any other public or private organization, even free of
+     charge;
+  b) installation on corporate devices or making the application available
+     to the staff of an organization;
+  c) selling, reselling, renting, sublicensing or redistributing the
+     application or any part of it;
+  d) modifying, decompiling, reverse engineering or creating derivative
+     works, except as mandatorily permitted by law.
 
-> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
+3. SOURCE CODE
+The code is published on GitHub so that it can be read and checked.
+GitHub's Terms of Service allow GitHub users to view it and fork it on the
+platform; any other use of the code is governed by section 2.
 
-## Changes and New Works License
+4. NO WARRANTY
+The application is provided "as is", without warranties of any kind, express
+or implied. It is not a medical device: the date and batch read by the
+camera must always be checked on the box, and the application does not
+replace the records, procedures and responsibilities set by the
+organization. To the maximum extent permitted by law, the author shall not
+be liable for any damage arising from the use of, or inability to use, the
+application.
 
-The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
+5. THIRD-PARTY COMPONENTS
+The third-party components in the application (Dart packages, Android
+libraries, components inside Google ML Kit and Google Play services, fonts)
+and the medicine data of the Italian Medicines Agency (CC BY 4.0) remain
+under their own licenses, listed in the application (Impostazioni ›
+Licenze); those that Flutter does not collect by itself are also in
+assets/licenses/.
 
-## Patent License
+6. EARLIER VERSIONS
+Versions up to 1.4.3 were distributed under the PolyForm Noncommercial
+License 1.0.0 and remain under that license for those who received them.
+From version 1.4.4 this license applies.
 
-The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
-
-## Noncommercial Purposes
-
-Any noncommercial purpose is a permitted purpose.
-
-## Personal Uses
-
-Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
-
-## Noncommercial Organizations
-
-Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
-
-## Fair Use
-
-You may have "fair use" rights for the software under the law. These terms do not limit them.
-
-## No Other Rights
-
-These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else.  These terms do not imply any other licenses.
-
-## Patent Defense
-
-If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
-
-## Violations
-
-The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice.  Otherwise, all your licenses end immediately.
-
-## No Liability
-
-***As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.***
-
-## Definitions
-
-The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
-
-**You** refers to the individual or entity agreeing to these terms.
-
-**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization.  **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise.  Control can be direct or indirect.
-
-**Your licenses** are all the licenses granted to you for the software under these terms.
-
-**Use** means anything you do with the software requiring one of your licenses.
+7. LICENSES FOR ORGANIZATIONS
+For use by organizations, contact the author through the project page:
+https://github.com/Daveide90/scadenzapp

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scadenzapp/app_info.dart';
@@ -120,9 +121,50 @@ void main() {
         'Dati dei farmaci (AIFA)',
         'Librerie Android',
         'Librerie Android: avvisi (NOTICE)',
+        'Protocol Buffers (dentro Tink)',
+        'Material Icons',
+        googleComponentsPackage,
         'SLF4J',
       ]) {
         expect(packages, contains(p));
+      }
+    });
+
+    test('la licenza d\'uso è nell\'app e vieta l\'uso alle strutture', () async {
+      final testo = await rootBundle.loadString('LICENSE');
+      for (final atteso in [
+        'singolo professionista sanitario',
+        'se ne assume la',
+        'ospedali, cliniche, RSA',
+        'hospitals,',
+        'Dalla versione 1.4.4 vale questa licenza',
+      ]) {
+        expect(testo, contains(atteso));
+      }
+    });
+
+    test('gli avvisi dei componenti dentro ML Kit ci sono tutti', () async {
+      registerExtraLicenses();
+      final testi = StringBuffer();
+      var voci = 0;
+      await for (final entry in LicenseRegistry.licenses) {
+        if (entry.packages.contains(googleComponentsPackage)) {
+          voci++;
+          for (final p in entry.paragraphs) {
+            testi.writeln(p.text);
+          }
+        }
+      }
+      final t = testi.toString();
+      expect(voci, greaterThan(100));
+      for (final atteso in [
+        'TensorFlow',
+        'Leptonica',
+        'Protocol Buffers',
+        'Abseil',
+        'Redistribution and use in source and binary forms',
+      ]) {
+        expect(t, contains(atteso));
       }
     });
 

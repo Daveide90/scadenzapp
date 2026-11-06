@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -39,8 +41,41 @@ void registerExtraLicenses() {
       const ['Librerie Android: avvisi (NOTICE)'],
       await rootBundle.loadString('assets/licenses/android-notice.txt'),
     );
+    yield LicenseEntryWithLineBreaks(
+      const ['Protocol Buffers (dentro Tink)'],
+      'Tink, la libreria di cifratura di Google usata per le chiavi, '
+      'contiene una copia di Protocol Buffers.\n\n'
+      '${await rootBundle.loadString('assets/licenses/protobuf.txt')}',
+    );
+    yield LicenseEntryWithLineBreaks(
+      const ['Material Icons'],
+      'Icone Material Design, Copyright Google, nel carattere '
+      'MaterialIcons-Regular incluso da Flutter.\n\n'
+      '${await rootBundle.loadString('assets/licenses/apache-2.0.txt')}',
+    );
+    // I componenti open source dentro ML Kit e Google Play services: i
+    // testi vengono dai file third_party_licenses delle librerie stesse,
+    // una licenza per componente, sotto una sola voce.
+    final google = jsonDecode(
+            await rootBundle.loadString('assets/licenses/google-componenti.json'))
+        as Map<String, dynamic>;
+    yield LicenseEntryWithLineBreaks(
+      const [googleComponentsPackage],
+      '${google['fonte']}\n\nCon la sola Apache License 2.0 (testo intero '
+      'nella voce «Librerie Android»): '
+      '${(google['solo_apache'] as List).join(', ')}.',
+    );
+    for (final voce in google['voci'] as List) {
+      yield LicenseEntryWithLineBreaks(
+        const [googleComponentsPackage],
+        '${voce['nomi']}\n\n${voce['testo']}',
+      );
+    }
   });
 }
+
+/// Voce della pagina Licenze con i componenti dentro ML Kit e Play services.
+const googleComponentsPackage = 'Componenti dentro ML Kit e Google Play services';
 
 /// Citazione dei dati AIFA come chiede la licenza CC BY 4.0: autore, fonte,
 /// licenza e cosa è stato cambiato.

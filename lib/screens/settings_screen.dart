@@ -123,6 +123,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onTap: () => _showPrivacyDialog(context),
             ),
           ListTile(
+            leading: const Icon(Icons.gavel_outlined),
+            title: const Text('Licenza d\'uso'),
+            subtitle: const Text(
+                'Gratis per il singolo professionista; non per le strutture'),
+            onTap: () async {
+              final testo = await rootBundle.loadString('LICENSE');
+              if (!context.mounted) return;
+              _showTextDialog(context, 'Licenza d\'uso', testo);
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.description_outlined),
             title: const Text('Licenze'),
             subtitle: const Text('Componenti e dati usati dall\'app'),

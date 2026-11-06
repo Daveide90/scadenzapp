@@ -1,5 +1,41 @@
 # Novità di ScadenzApp
 
+## 1.4.4 · 6 novembre 2026 (beta)
+
+Correzioni da una revisione indipendente della pubblicazione.
+
+**Licenze**
+
+- **Componenti dentro ML Kit e Google Play services.** In Impostazioni ›
+  Licenze c'è la voce «Componenti dentro ML Kit e Google Play services»:
+  i 203 componenti open source che le librerie Google portano nell'app
+  (TensorFlow, Protocol Buffers, Leptonica, Abseil e gli altri), con i
+  testi presi dai loro file third_party_licenses.
+- **Protocol Buffers dentro Tink e Material Icons**, con le loro licenze.
+- La LICENSE dice dove sta l'elenco dei pacchetti Dart (solo nell'app).
+
+**Testi**
+
+- Rete: l'app non ha il permesso Internet e non manda i tuoi dati; il
+  README e l'avviso del primo avvio ora dicono anche che ML Kit, secondo
+  i termini di Google, può mandare a Google dati sulle prestazioni e
+  sull'uso delle sue funzioni tramite Google Play services.
+**Licenza d'uso nuova**
+
+- **Dalla 1.4.4 ScadenzApp ha una sua licenza** (file LICENSE, in italiano
+  e in inglese): gratuita per il singolo professionista sanitario, sui
+  propri dispositivi e sotto la propria responsabilità; ospedali, cliniche,
+  RSA, farmacie e altre organizzazioni non possono usarla né darla al
+  personale senza un accordo scritto con l'autore. Si legge in Impostazioni
+  › Licenza d'uso e nell'avviso del primo avvio. Le versioni fino alla 1.4.3
+  restano sotto la PolyForm Noncommercial License 1.0.0 per chi le ha
+  ricevute.
+
+**Build**
+
+- `tools/build_rilascio.sh` compila l'APK di rilascio da una cartella
+  neutra: nel binario non finisce più il percorso del computer.
+
 ## 1.4.3 · 6 novembre 2026 (beta)
 
 **Licenze**

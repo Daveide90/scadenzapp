@@ -65,14 +65,22 @@ List<IntendedUseSection> get intendedUseSections => [
       ),
       const IntendedUseSection(
         'I dati stanno solo su questo telefono',
-        'L\'app non ha accesso a Internet e non manda dati a nessuno. Se il '
+        'L\'app non ha il permesso Internet e non manda i tuoi dati a '
+            'nessuno. I componenti Google che leggono date e codici (ML Kit) '
+            'lavorano sul telefono e non mandano le immagini né il testo '
+            'letto; possono mandare a Google, tramite Google Play services, '
+            'dati sulle prestazioni e sull\'uso di queste funzioni. Se il '
             'telefono si rompe o l\'app viene disinstallata, i dati si '
             'recuperano solo da un backup salvato fuori dall\'app.',
       ),
       const IntendedUseSection(
-        'Senza garanzie',
-        'ScadenzApp è gratuita e viene fornita così com\'è, senza garanzie, '
-            'nei limiti consentiti dalla legge.',
+        'Chi può usarla, senza garanzie',
+        'ScadenzApp è gratuita per il singolo professionista sanitario, che la '
+            'usa sui propri dispositivi e sotto la propria responsabilità. '
+            'Ospedali, cliniche, RSA, farmacie e altre strutture non possono '
+            'usarla né darla al personale senza un accordo scritto con '
+            'l\'autore. Viene fornita così com\'è, senza garanzie, nei limiti '
+            'consentiti dalla legge (Impostazioni › Licenza d\'uso).',
       ),
     ];
 

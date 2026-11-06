@@ -4,7 +4,7 @@
 
 Medicine expiry inventory for ward, clinic and care home cabinets. · Inventario delle scadenze dei farmaci negli armadietti di reparto, ambulatorio e struttura.
 
-Version 1.4.3 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
+Version 1.4.4 beta · Android 8.0 or later · not on Google Play: test builds are shared by hand.
 
 <p align="center">
   <a href="https://github.com/Daveide90/scadenzapp/releases/latest/download/ScadenzApp.apk"><img src="docs/pulsante-download.svg" width="340" alt="Download APK · Scarica l'APK"></a>
@@ -26,7 +26,7 @@ Version 1.4.3 beta · Android 8.0 or later · not on Google Play: test builds ar
 
 ## English
 
-ScadenzApp keeps track of medicine expiry dates in the cabinets of a ward, a clinic or a care home. You point the camera at the box, the app reads the expiry date and the batch number, and every cabinet shows in colour what expires and when. Everything stays on the phone: the app has no Internet access.
+ScadenzApp keeps track of medicine expiry dates in the cabinets of a ward, a clinic or a care home. You point the camera at the box, the app reads the expiry date and the batch number, and every cabinet shows in colour what expires and when. Your data stay on the phone: the app has no Internet permission.
 
 ### What it does
 
@@ -50,7 +50,7 @@ ScadenzApp is an inventory tool. **It is not a medical device**: it gives no adv
 
 | Aspect | How it is done |
 |---|---|
-| Network | No Internet permission in the manifest: the app cannot send anything. No account, ads, usage statistics or crash reports. |
+| Network | No Internet permission in the manifest: the app itself sends none of your data. No account, ads, usage statistics or crash reports of its own. The Google ML Kit components that read dates and barcodes work on the phone and, according to [Google's ML Kit terms](https://developers.google.com/ml-kit/terms), do not send the images or the text they read; they may send Google metrics on the performance and use of these functions, through Google Play services. |
 | Data on the phone | Database encrypted with SQLCipher; the key is kept in the Android Keystore. |
 | Automatic copies | Android backup and device-to-device transfer are off (`allowBackup="false"`, `dataExtractionRules`). |
 | Backup | AES-256-CBC with HMAC-SHA256 (encrypt, then authenticate), key from PBKDF2-SHA256 with 600,000 iterations. |
@@ -59,7 +59,7 @@ ScadenzApp is an inventory tool. **It is not a medical device**: it gives no adv
 
 ### How I approached security
 
-**Secure by design.** ScadenzApp was built so that there is nothing to take from the outside: no Internet permission, no account, no server, no analytics. The data are encrypted on the phone (SQLCipher, key in the Android Keystore), backups are encrypted with a password, Android cloud backup and device transfer are off, and the screen cannot be captured.
+**Secure by design.** ScadenzApp was built so that there is nothing to take from the outside: no Internet permission, no account, no server, no analytics of its own (on the Google ML Kit metrics see the table above). The data are encrypted on the phone (SQLCipher, key in the Android Keystore), backups are encrypted with a password, Android cloud backup and device transfer are off, and the screen cannot be captured.
 
 **Hardened as far as I could.** Then I strengthened it step by step: authenticated backups (encrypt-then-MAC, PBKDF2 at 600,000 iterations, constant-time comparison), checks on imported backup files, a safe move from older unencrypted databases, an optional lock with fingerprint or PIN, no medicine names on the lock screen. Third-party libraries are checked against the public OSV vulnerability database: on 3 November 2026 SQLCipher (with its SQLite) and Guava were updated to close known CVEs.
 
@@ -82,19 +82,21 @@ You need Flutter 3.44 and, for Gradle, Java 21.
 ```bash
 flutter pub get
 flutter test                       # all tests
-flutter build apk --release --split-per-abi
+flutter build apk --release --split-per-abi   # test build
+tools/build_rilascio.sh                     # release APK, built from a neutral folder
 ```
 
 The release signature reads `android/key.properties`, which is not in the repository.
 
 | Tool | What it is for |
 |---|---|
+| `tools/build_rilascio.sh` | Builds the release APK from `/var/tmp/scadenzapp-build`, so that no path of the build computer ends up in the app, and checks it. |
 | `tools/genera_catalogo_aifa.py` | Rebuilds the catalogue from the AIFA open data; then update the date in `lib/app_info.dart` (a test checks it). |
 | `tools/schermate/` | Rebuilds the screenshots of this page. |
 
 ### Licences and sources
 
-The code is released under the [PolyForm Noncommercial License 1.0.0](LICENSE): anyone may read it, use it, change it and share it for noncommercial purposes, and hospitals, public bodies, schools and research institutions may use it whatever their funding. Commercial use requires a separate licence from the author, who keeps all other rights, including the name ScadenzApp. The medicine data belong to the **Italian Medicines Agency (AIFA)**, open data set «Confezioni dei farmaci», licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the app keeps only authorised packs, with names and strengths reorganised for search. AIFA is not involved in this project. The PDF typeface is Roboto (Apache 2.0). The licences of every component, Android libraries included, are in the app under Impostazioni › Licenze.
+**Who may use it.** From version 1.4.4 ScadenzApp has its own [licence](LICENSE): it is free for the individual healthcare professional (nurse, pharmacist, physician, natural person), on their own devices and under their own responsibility. Hospitals, clinics, care homes, pharmacies and any other organisation may not use it, adopt it or give it to their staff without a written agreement with the author (contact through this page). The code is public so that it can be read and checked, not reused: all other rights are reserved, including the name ScadenzApp. Versions up to 1.4.3 were released under the PolyForm Noncommercial License 1.0.0 and stay under it for those who received them. The medicine data belong to the **Italian Medicines Agency (AIFA)**, open data set «Confezioni dei farmaci», licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); the app keeps only authorised packs, with names and strengths reorganised for search. AIFA is not involved in this project. The PDF typeface is Roboto (Apache 2.0). The licences of every component, Android libraries and the open source components inside Google ML Kit included, are in the app under Impostazioni › Licenze.
 
 ### Feedback
 
@@ -104,7 +106,7 @@ Problems and ideas: open an issue on this repository. Security problems: see [SE
 
 ## Italiano
 
-ScadenzApp tiene il conto delle scadenze dei farmaci negli armadietti di un reparto, di un ambulatorio o di una struttura. Si inquadra la confezione, l'app legge scadenza e lotto, e ogni armadietto mostra a colori cosa scade e quando. Tutto resta sul telefono: l'app non ha accesso a Internet.
+ScadenzApp tiene il conto delle scadenze dei farmaci negli armadietti di un reparto, di un ambulatorio o di una struttura. Si inquadra la confezione, l'app legge scadenza e lotto, e ogni armadietto mostra a colori cosa scade e quando. I dati restano sul telefono: l'app non ha il permesso Internet.
 
 ### Cosa fa
 
@@ -128,7 +130,7 @@ ScadenzApp è uno strumento di inventario. **Non è un dispositivo medico**: non
 
 | Aspetto | Com'è fatto |
 |---|---|
-| Rete | Nessun permesso Internet nel manifest: l'app non può trasmettere nulla. Niente account, pubblicità, statistiche d'uso o segnalazioni di crash. |
+| Rete | Nessun permesso Internet nel manifest: l'app non manda nessuno dei tuoi dati. Niente account, pubblicità, statistiche d'uso o segnalazioni di crash proprie. I componenti Google ML Kit che leggono date e codici a barre lavorano sul telefono e, secondo i [termini di ML Kit](https://developers.google.com/ml-kit/terms), non mandano a Google né le immagini né il testo letto; possono mandare a Google, tramite Google Play services, dati sulle prestazioni e sull'uso di queste funzioni. |
 | Dati sul telefono | Database cifrato con SQLCipher; la chiave sta nel Keystore di Android. |
 | Copie automatiche | Backup di Android e trasferimento fra telefoni spenti (`allowBackup="false"`, `dataExtractionRules`). |
 | Backup | AES-256-CBC con HMAC-SHA256 (cifra, poi autentica), chiave da PBKDF2-SHA256 a 600.000 iterazioni. |
@@ -137,7 +139,7 @@ ScadenzApp è uno strumento di inventario. **Non è un dispositivo medico**: non
 
 ### Come ho affrontato la sicurezza
 
-**Sicura fin dal progetto.** ScadenzApp è nata perché da fuori non ci sia niente da prendere: nessun permesso Internet, nessun account, nessun server, nessuna statistica. I dati sono cifrati sul telefono (SQLCipher, chiave nel Keystore di Android), i backup sono cifrati con una password, il backup di Android e il trasferimento fra telefoni sono spenti, e lo schermo non si può catturare.
+**Sicura fin dal progetto.** ScadenzApp è nata perché da fuori non ci sia niente da prendere: nessun permesso Internet, nessun account, nessun server, nessuna statistica propria (sui dati di funzionamento di Google ML Kit vedi la tabella sopra). I dati sono cifrati sul telefono (SQLCipher, chiave nel Keystore di Android), i backup sono cifrati con una password, il backup di Android e il trasferimento fra telefoni sono spenti, e lo schermo non si può catturare.
 
 **Rinforzata finché ho potuto.** Poi l'ho irrobustita un passo alla volta: backup autenticati (cifra e poi autentica, PBKDF2 a 600.000 iterazioni, confronto a tempo costante), controlli sui file di backup importati, passaggio sicuro dai vecchi database in chiaro, blocco facoltativo con impronta o PIN, nessun nome di farmaco sulla schermata di blocco. Le librerie di terzi si controllano sul database pubblico delle vulnerabilità OSV: il 3 novembre 2026 SQLCipher (con il suo SQLite) e Guava sono state aggiornate per chiudere CVE note.
 
@@ -160,19 +162,21 @@ Serve Flutter 3.44 e, per Gradle, Java 21.
 ```bash
 flutter pub get
 flutter test                       # tutte le prove
-flutter build apk --release --split-per-abi
+flutter build apk --release --split-per-abi   # build di prova
+tools/build_rilascio.sh                     # APK di rilascio, compilato da una cartella neutra
 ```
 
 La firma di rilascio legge `android/key.properties`, che non sta nel repository.
 
 | Strumento | A cosa serve |
 |---|---|
+| `tools/build_rilascio.sh` | Compila l'APK di rilascio da `/var/tmp/scadenzapp-build`, perché nell'app non finisca nessun percorso del computer che compila, e lo controlla. |
 | `tools/genera_catalogo_aifa.py` | Rigenera il catalogo dagli open data AIFA; poi va aggiornata la data in `lib/app_info.dart` (un test lo controlla). |
 | `tools/schermate/` | Rigenera le schermate di questa pagina. |
 
 ### Licenze e fonti
 
-Il codice è distribuito con la [PolyForm Noncommercial License 1.0.0](LICENSE): chiunque può leggerlo, usarlo, modificarlo e condividerlo per scopi non commerciali, e ospedali, enti pubblici, scuole e istituti di ricerca possono usarlo comunque siano finanziati. L'uso commerciale richiede una licenza separata dall'autore, che si tiene tutti gli altri diritti, compreso il nome ScadenzApp. I dati dei farmaci sono dell'**Agenzia Italiana del Farmaco (AIFA)**, open data «Confezioni dei farmaci», con licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it); nell'app sono tenute solo le confezioni autorizzate, con nomi e dosaggi riorganizzati per la ricerca. L'AIFA non è coinvolta nel progetto. Il carattere dei PDF è Roboto (Apache 2.0). Le licenze di tutti i componenti, comprese le librerie Android, sono nell'app in Impostazioni › Licenze.
+**Chi può usarla.** Dalla versione 1.4.4 ScadenzApp ha una sua [licenza](LICENSE): è gratuita per il singolo professionista sanitario (infermiere, farmacista, medico, persona fisica), sui propri dispositivi e sotto la propria responsabilità. Ospedali, cliniche, RSA, farmacie e ogni altra organizzazione non possono usarla, adottarla o darla al proprio personale senza un accordo scritto con l'autore (contatto da questa pagina). Il codice è pubblico perché si possa leggere e verificare, non riutilizzare: tutti gli altri diritti sono riservati, compreso il nome ScadenzApp. Le versioni fino alla 1.4.3 sono uscite con la PolyForm Noncommercial License 1.0.0 e restano sotto quella licenza per chi le ha ricevute. I dati dei farmaci sono dell'**Agenzia Italiana del Farmaco (AIFA)**, open data «Confezioni dei farmaci», con licenza [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.it); nell'app sono tenute solo le confezioni autorizzate, con nomi e dosaggi riorganizzati per la ricerca. L'AIFA non è coinvolta nel progetto. Il carattere dei PDF è Roboto (Apache 2.0). Le licenze di tutti i componenti, comprese le librerie Android e i componenti open source dentro Google ML Kit, sono nell'app in Impostazioni › Licenze.
 
 ### Segnalazioni
 
