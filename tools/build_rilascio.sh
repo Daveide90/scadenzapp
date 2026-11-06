@@ -34,9 +34,9 @@ if [ "$TROVATI" != 0 ]; then
     echo "ERRORE: nell'APK ci sono $TROVATI percorsi della home"
     exit 1
 fi
-# Nessuna email dell'autore nel software, nemmeno quella per gli sviluppatori. Il nome della
-# casella personale è spezzato in due perché non compaia nel repository pubblico.
-EMAIL=$(unzip -p "$APK" | strings -n 6 | grep -c -i -e "dev\.davide@" -e "riu""ccio" || true)
+# Nessuna email dell'autore nel software, nemmeno quella per gli sviluppatori. Le parole sono
+# spezzate in due perché non compaiano nel repository pubblico.
+EMAIL=$(unzip -p "$APK" | strings -n 6 | grep -c -i -e "dev\.dav""ide@" -e "riu""ccio" || true)
 if [ "$EMAIL" != 0 ]; then
     echo "ERRORE: nell'APK c'è un'email dell'autore ($EMAIL righe)"
     exit 1
